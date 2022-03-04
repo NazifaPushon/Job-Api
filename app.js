@@ -10,7 +10,7 @@ const rateLimit = require("express-rate-limit");
 
 const swaggerUi = require("swagger-ui-express");
 const YAML = require("yamljs");
-const swaggerDocumentation = YAML.load('./swagger.yaml')
+const swaggerDocumentation = YAML.load("./swagger.yaml");
 //connectDB
 const connectDB = require("./db/connect.js");
 const authenticateUser = require("./middleware/authentication");
@@ -42,7 +42,7 @@ app.use("/api/v1/jobs", authenticateUser, jobRouter);
 app.get("/", (req, res) => {
   res.send("<h1>Job API</h1><a href='/api-docs'>Documentation</a>");
 });
-app.use('/api-docs',swaggerUi.serve,swaggerUi.setup(swaggerDocumentation))
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocumentation));
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
